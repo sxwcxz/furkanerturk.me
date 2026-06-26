@@ -1,635 +1,636 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furkan Ertürk | Software Developer Portfolio</title>
+    <title>Furkan Ertürk | Developer Portfolio</title>
+    
+    <link rel="icon" href="https://github.com/sxwcxz.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
     <style>
-        :root {
-            --bg-main: #0b0f19;
-            --bg-card: #151f32;
-            --bg-darker: #070a12;
-            --accent: #38bdf8;
-            --accent-gradient: linear-gradient(135deg, #38bdf8, #6366f1);
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border-color: #22314d;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #ededed;
             overflow-x: hidden;
+            transition: all 0.3s ease;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-main);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
+        a, button, select {
+            -webkit-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Header / Navbar */
-        header {
+        .bg-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            background-color: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.08), transparent 60%);
-        }
-
-        .hero-badge {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            color: var(--accent);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 35px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(56, 189, 248, 0.35);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: var(--text-muted);
-        }
-
-        /* Sections General */
-        section {
-            padding: 90px 0;
-            border-bottom: 1px solid rgba(34, 49, 77, 0.4);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 45px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
+        .glow-blob {
             position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
+            width: 90vw;
+            max-width: 500px;
+            height: 500px;
+            background: rgba(56, 188, 248, 0.12);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .info-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .info-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
-            transition: transform 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .info-card h4 {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .info-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* Tech Stack Section */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 20px;
-        }
-
-        .tech-item {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px 15px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .tech-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            background: linear-gradient(to bottom, var(--bg-card), rgba(56, 189, 248, 0.03));
-        }
-
-        .tech-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .tech-item span {
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 10px 30px rgba(7, 10, 18, 0.5);
-        }
-
-        .project-cover {
-            height: 180px;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            border-bottom: 1px solid var(--border-color);
+        .bento-card {
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            overflow: hidden;
+            height: 100%;
         }
 
-        .project-cover::after {
-            content: '';
+        .bento-card::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
         }
 
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .bento-card:hover::before { opacity: 1; }
+        .bento-card:hover {
+            border-color: rgba(56, 188, 248, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px -15px rgba(56, 188, 248, 0.2);
+            background: rgba(25, 25, 25, 0.6);
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
         }
 
-        .project-tag {
-            font-size: 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4px 10px;
-            border-radius: 4px;
-            color: var(--text-muted);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
 
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        .project-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Timeline Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 30px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 2px;
-            height: 100%;
-            background: var(--border-color);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 45px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -35px;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--bg-main);
-            border: 3px solid var(--accent);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .timeline-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .timeline-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Geek Zone & Spotify Widget */
-        .geek-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 40px;
-        }
-
-        .geek-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
-        }
-
-        .geek-post {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-
-        .geek-post:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        .geek-post-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .geek-post-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Spotify Widget Panel */
-        .spotify-panel {
-            background: linear-gradient(180deg, #1db954 0%, #0b0f19 100%);
-            border-radius: 16px;
-            padding: 2px;
-        }
-
-        .spotify-inner {
-            background: #070a12;
-            border-radius: 14px;
-            padding: 30px;
-            height: 100%;
+        .tech-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-        }
-
-        .spotify-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #1db954;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .vinyl-disc {
-            width: 140px;
-            height: 140px;
-            background: #111;
-            border-radius: 50%;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-            position: relative;
-            background-image: radial-gradient(circle, #333 10%, transparent 11%, transparent 20%, #222 21%, #222 30%, transparent 31%);
-            animation: spin 8s linear infinite;
-        }
-
-        .vinyl-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 4px solid #000;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-
-        .track-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .artist-name {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .player-controls {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .progress-bar {
-            height: 4px;
-            background: #222;
-            border-radius: 2px;
-            width: 100%;
-            position: relative;
-        }
-
-        .progress-current {
-            height: 100%;
-            background: #1db954;
-            width: 65%;
-            border-radius: 2px;
-        }
-
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* Contact Footer Section */
-        footer {
-            background-color: var(--bg-darker);
-            padding: 60px 0 30px 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .footer-socials {
-            display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            aspect-ratio: 1;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+        .tech-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .tech-box i { font-size: 1.75rem; }
+        @media (min-width: 640px) { .tech-box i { font-size: 2rem; } }
+        .tech-box span { font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; opacity: 0.8; text-align: center; }
+        
+        .lang-dropdown {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+            user-select: none;
+        }
+        .lang-dropdown:hover { 
+            background: rgba(255, 255, 255, 0.1); 
+            border-color: rgba(56, 188, 248, 0.4);
         }
 
-        .social-icon {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: var(--bg-card);
-        }
-
-        .social-icon:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .footer-copy {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.4rem; }
-            .about-grid, .geek-grid { grid-template-columns: 1fr; }
-            nav ul { display: none; } /* Standard simplify for raw template */
-            .info-cards { grid-template-columns: 1fr; }
+        .matrix-bg {
+            background-image: linear-gradient(rgba(56, 188, 248, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 188, 248, 0.1) 1px, transparent 1px);
+            background-size: 12px 12px;
+            background-position: center center;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-[#38bdf8] selection:text-black" dir="ltr">
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">furkan.dev</a>
+    <div class="bg-grid"></div>
+    <div class="glow-blob"></div>
+
+    <div id="hacker-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 invisible transition-all duration-300" onclick="closeHackerJoke(event)">
+        <div class="bg-[#0a0a0a] border border-[#38bdf8]/30 rounded-2xl p-6 sm:p-8 w-[90vw] max-w-sm transform scale-95 transition-transform duration-300 text-center shadow-[0_0_50px_rgba(56,188,248,0.15)] relative overflow-hidden" onclick="event.stopPropagation()">
+            <button onclick="closeHackerJoke()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors z-20 p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="absolute inset-0 matrix-bg opacity-10"></div>
+            <div class="relative z-10">
+                <div class="text-[#38bdf8] text-4xl sm:text-5xl mb-4 animate-bounce"><i class="fa-solid fa-code"></i></div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-2 font-mono tracking-tight" data-i18n="joke_title">Looking for something? 👀</h3>
+                <p class="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed" data-i18n="joke_desc">Then contact me! You can drop a message on WhatsApp or check out my open-source code on GitHub.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="https://wa.me/447441344175" target="_blank" onclick="closeHackerJoke()" class="px-4 py-2.5 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 rounded-full hover:bg-[#25D366] hover:text-black transition-all text-xs sm:text-sm font-medium flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="joke_btn_wa">WhatsApp</span>
+                    </a>
+                    <a href="https://github.com/sxwcxz" target="_blank" onclick="closeHackerJoke()" class="px-4 py-2.5 bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/30 rounded-full hover:bg-[#38bdf8] hover:text-black transition-all text-xs sm:text-sm font-medium flex items-center justify-center gap-2">
+                        <i class="fab fa-github text-lg"></i> <span data-i18n="joke_btn_git">GitHub</span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
+    </div>
 
-    
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex justify-between items-center relative z-50 animate-in">
+        <div class="font-mono font-medium text-white flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
+            <div class="relative flex h-2 w-2 sm:h-3 sm:w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38bdf8] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-full w-full bg-[#38bdf8]"></span>
+            </div>
+            furkan.
+        </div>
+        <div class="flex gap-2 sm:gap-4 items-center">
+            
+            <div class="relative group">
+                <button class="lang-dropdown text-white px-3 py-1.5 sm:px-4 sm:py-2.5 text-xs sm:text-sm">
+                    <i class="fa-solid fa-globe text-[#38bdf8]"></i> <span id="current-lang" class="font-semibold">EN</span> <i class="fa-solid fa-chevron-down text-[10px] sm:text-xs ml-0.5 text-gray-400"></i>
+                </button>
+                
+                <div class="absolute right-0 mt-2 w-28 sm:w-32 bg-[#151515] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden z-50">
+                    <button onclick="changeLanguage('en', 'EN')" class="w-full text-left px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors">English</button>
+                    <button onclick="changeLanguage('tr', 'TR')" class="w-full text-left px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors">Türkçe</button>
+                    <button onclick="changeLanguage('es', 'ES')" class="w-full text-left px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors">Español</button>
+                    <button onclick="changeLanguage('zh', 'ZH')" class="w-full text-left px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors">中文</button>
+                    <button onclick="changeLanguage('ar', 'AR')" class="w-full text-left px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors">العربية</button>
+                </div>
+            </div>
 
+            <a href="https://github.com/sxwcxz" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-[#38bdf8] transition-colors text-sm sm:text-base">
+                <i class="fab fa-github"></i>
+            </a>
+            
+            <a href="https://wa.me/447441344175" target="_blank" class="px-4 py-1.5 sm:px-6 sm:py-2.5 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-gray-200 hover:scale-105 transition-all flex items-center gap-1.5 sm:gap-2">
+                <span class="hidden sm:inline" data-i18n="contact_text">Let's Talk</span> <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-20 sm:pb-24 relative z-10">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-start">
+            
+            <div class="bento-card p-6 sm:p-10 lg:col-span-3 flex flex-col justify-center animate-in delay-1 h-full">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs font-mono text-gray-300 mb-6 sm:mb-8 w-max">
+                    <i class="fa-solid fa-terminal text-[#38bdf8]"></i> <span data-i18n="sys_init">System.Initialize("Mobile & Full-Stack")</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-4 sm:mb-6 leading-[1.15] sm:leading-[1.1]" id="hero-title">
+                    Building digital experiences I'd actually <span class="text-[#38bdf8]">want to use.</span>
+                </h1>
+                <p class="text-gray-400 text-sm sm:text-base lg:text-lg font-light max-w-2xl leading-relaxed" data-i18n="hero_desc">
+                    I build mobile apps, engineer backend architectures, and obsess over UI animations until they feel perfect. I leverage AI agents to write cleaner code, faster.
+                </p>
+            </div>
+
+            <div class="bento-card p-6 sm:p-8 flex flex-col items-center justify-center text-center animate-in delay-2 h-full">
+                <div class="relative w-24 h-24 sm:w-28 sm:h-28 mb-4 group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#38bdf8] to-[#1e3a8a] rounded-full animate-spin-slow opacity-70 group-hover:opacity-100 transition-opacity" style="animation: spin 8s linear infinite;"></div>
+                    <img src="https://github.com/sxwcxz.png" alt="Furkan" class="absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] rounded-full object-cover border-2 border-[#050505]" />
+                </div>
+                <h2 class="text-lg sm:text-xl font-medium text-white tracking-wide">Furkan Ertürk</h2>
+                <a href="https://github.com/sxwcxz" target="_blank" class="text-xs sm:text-sm text-[#38bdf8] mt-1 mb-5 hover:underline">@sxwcxz</a>
+                
+                <div class="w-full relative overflow-hidden rounded-xl bg-[#22c55e]/5 border border-[#22c55e]/20 p-3 flex items-center gap-2 sm:gap-3 transition-colors duration-500 text-left mt-auto" id="auto-status-container">
+                    <div class="absolute -left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#22c55e]/20 blur-xl rounded-full transition-colors duration-500" id="auto-status-glow"></div>
+                    
+                    <div class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5 ml-1 flex-shrink-0">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75 transition-colors duration-500" id="auto-status-ping"></span>
+                        <span class="relative inline-flex rounded-full h-full w-full bg-[#22c55e] transition-colors duration-500" id="auto-status-dot"></span>
+                    </div>
+                    
+                    <div class="flex flex-col flex-1 z-10 min-w-0">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[8px] sm:text-[9px] text-[#22c55e] font-mono tracking-widest font-semibold uppercase truncate transition-colors duration-500" data-i18n="availability_label" id="auto-status-label">AVAILABILITY</span>
+                            <span class="text-[7px] text-gray-500 border border-gray-600 rounded px-1 tracking-wider bg-black">AUTO-SYNC</span>
+                        </div>
+                        <span class="text-[10px] sm:text-xs text-white font-medium mt-0.5 tracking-wide truncate transition-all duration-500" id="current-status-text">Checking System...</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bento-card p-6 sm:p-8 lg:col-span-2 flex flex-col justify-start animate-in delay-3 h-full">
+                <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-gray-400 text-sm sm:text-base">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-medium text-white" data-i18n="bg_title">Background</h3>
+                </div>
+                
+                <div class="space-y-5 sm:space-y-6 rtl-space h-full flex flex-col justify-center">
+                    <div class="relative pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-white/10 custom-border">
+                        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#38bdf8] rounded-full -left-[3.5px] sm:-left-[4.5px] rtl:left-auto rtl:-right-[3.5px] sm:rtl:-right-[4.5px] top-1.5 custom-dot"></div>
+                        <h4 class="text-white font-medium text-sm sm:text-md" data-i18n="exp_intern_title">Software & Database Intern</h4>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1 mb-1 sm:mb-1.5">Memoria Bilişim & Arnavutköy</p>
+                        <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-3 leading-relaxed" data-i18n="exp_intern_desc">Managed internal database systems, resolved software issues, and optimized data flow architecture.</p>
+                        <span class="inline-block px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 rounded text-[9px] sm:text-xs font-mono text-gray-500" data-i18n="exp_pro">Professional Experience</span>
+                    </div>
+                    
+                    <div class="relative pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-white/10 custom-border">
+                        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-600 rounded-full -left-[3.5px] sm:-left-[4.5px] rtl:left-auto rtl:-right-[3.5px] sm:rtl:-right-[4.5px] top-1.5 custom-dot"></div>
+                        <h4 class="text-white font-medium text-sm sm:text-md" data-i18n="exp_edu_title">Computer Programming</h4>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1 mb-1 sm:mb-1.5">Kırklareli University</p>
+                        <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-3 leading-relaxed" data-i18n="exp_edu_desc">Focusing on object-oriented programming, modern web technologies, and mobile app development.</p>
+                        <span class="inline-block px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 rounded text-[9px] sm:text-xs font-mono text-gray-500" data-i18n="exp_aca">Academic</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card p-6 sm:p-8 lg:col-span-2 flex flex-col justify-start animate-in delay-3 h-full">
+                <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-gray-400 text-sm sm:text-base">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-medium text-white" data-i18n="tech_title">Tech Arsenal</h3>
+                </div>
+
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3 mt-1 sm:mt-2">
+                    <div class="tech-box"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+                    <div class="tech-box"><i class="devicon-dart-plain colored"></i><span>Dart</span></div>
+                    <div class="tech-box"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                    <div class="tech-box"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                    <div class="tech-box"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                    
+                    <div class="tech-box"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+                    <div class="tech-box"><i class="devicon-react-original colored"></i><span>React</span></div>
+                    <div class="tech-box"><i class="devicon-tailwindcss-original colored"></i><span>Tailwind</span></div>
+                    <div class="tech-box"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                    <div class="tech-box"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                    
+                    <div class="tech-box"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="tech-box"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                    <div class="tech-box"><i class="devicon-supabase-plain colored"></i><span>Supabase</span></div>
+                    <div class="tech-box"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                    <div class="tech-box"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                    
+                    <div class="tech-box"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="tech-box"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                    <div class="tech-box"><i class="devicon-figma-plain colored"></i><span>Figma</span></div>
+                    <div class="tech-box"><i class="fa-solid fa-brain text-[#D97757]"></i><span>Claude</span></div>
+                    <div class="tech-box"><i class="fa-solid fa-wand-magic-sparkles text-[#38bdf8]"></i><span>Antigravity</span></div>
+                </div>
+            </div>
+
+            <a href="https://github.com/sxwcxz/Muzo" target="_blank" class="bento-card p-6 sm:p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-[#1DB954] mb-3 sm:mb-4 text-2xl sm:text-3xl"><i class="fa-solid fa-headphones-simple"></i></div>
+                        <h3 class="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3 group-hover:text-[#38bdf8] transition-colors">Muzo</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-lg" data-i18n="prj_muzo">A privacy-focused YouTube Music client. No ads, background playback, and a UI that actually makes sense. Open source and built with Flutter.</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-[#38bdf8] group-hover:text-black transition-all rtl:rotate-180">
+                        <i class="fa-solid fa-arrow-right -rotate-45 rtl:rotate-45 text-sm sm:text-base"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://github.com/sxwcxz/filmoloji" target="_blank" class="bento-card p-6 sm:p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-[#e50914] mb-3 sm:mb-4 text-2xl sm:text-3xl"><i class="fa-solid fa-film"></i></div>
+                        <h3 class="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3 group-hover:text-[#38bdf8] transition-colors">Filmoloji</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-lg" data-i18n="prj_film">High-performance web streaming clone. Hand-coded the entire database infrastructure from scratch to master data flow.</p>
+                    </div>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-[#38bdf8] group-hover:text-black transition-all rtl:rotate-180">
+                        <i class="fa-solid fa-arrow-right -rotate-45 rtl:rotate-45 text-sm sm:text-base"></i>
+                    </div>
+                </div>
+            </a>
+
+            <div class="bento-card p-6 sm:p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
+                <div>
+                    <div class="text-[#ff4655] mb-3 sm:mb-4 text-2xl sm:text-3xl"><i class="fa-solid fa-crosshairs"></i></div>
+                    <h3 class="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">ValoMatch</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed" data-i18n="prj_valo">Basically Tinder, but for finding teammates in Valorant. The swipe physics and glassmorphism UI took forever to get right.</p>
+                </div>
+            </div>
+
+            <div class="bento-card p-6 sm:p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
+                <div>
+                    <div class="text-[#8b5cf6] mb-3 sm:mb-4 text-2xl sm:text-3xl"><i class="fa-solid fa-moon"></i></div>
+                    <h3 class="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">SoulEcho & Simulator</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed" data-i18n="prj_soul">Built an AI-powered social diary integrating OpenAI. Previously developed a hardware control simulator entirely in Java to map out system architectures.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-6 py-8 border-t border-white/10 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] sm:text-xs font-mono text-gray-600">
+        <p data-i18n="footer">Built by Furkan Ertürk. 2026.</p>
+        <p class="flex items-center gap-2"><i class="fa-solid fa-circle text-[#38bdf8] text-[6px] sm:text-[8px] animate-pulse"></i> <span data-i18n="systems">All systems operational</span></p>
+    </footer>
+
+    <script>
+        // --- HACKER SECURITY PROTOCOL (TAM KORUMA) ---
+        function showHackerJoke() {
+            const modal = document.getElementById('hacker-modal');
+            const modalBox = modal.querySelector('div');
+            modal.classList.remove('opacity-0', 'invisible');
+            modalBox.classList.remove('scale-95');
+            modalBox.classList.add('scale-100');
+        }
+
+        function closeHackerJoke(e) {
+            if (e && e.target !== e.currentTarget && e.type === 'click') return; 
+            const modal = document.getElementById('hacker-modal');
+            const modalBox = modal.querySelector('div');
+            modal.classList.add('opacity-0', 'invisible');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+        }
+
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); showHackerJoke(); });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); showHackerJoke(); }
+            if ((e.ctrlKey || e.metaKey) && (e.shiftKey || e.altKey)) {
+                if (e.key.toLowerCase() === 'i' || e.keyCode === 73 || e.key.toLowerCase() === 'j' || e.keyCode === 74 || e.key.toLowerCase() === 'c' || e.keyCode === 67) {
+                    e.preventDefault(); showHackerJoke();
+                }
+            }
+            if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'u' || e.keyCode === 85)) { e.preventDefault(); showHackerJoke(); }
+        });
+
+        // --- TAM OTOMATİK TÜRKİYE SAATİNE GÖRE STATUS MANTIĞI ---
+        let currentStatus = 'busy'; // Varsayılan durum
+        const statusColors = {
+            available: { main: '#22c55e', light: 'rgba(34,197,94,0.2)', faint: 'rgba(34,197,94,0.05)' }, // Yeşil
+            busy: { main: '#ef4444', light: 'rgba(239,68,68,0.2)', faint: 'rgba(239,68,68,0.05)' } // Kırmızı/Turuncu
+        };
+
+        function checkAndSetStatus() {
+            // Dünyanın neresinden girilirse girilsin saati Türkiye (İstanbul) saati olarak alır.
+            const turkeyTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Istanbul"}));
+            const hour = turkeyTime.getHours();
+
+            // Öğlen 12:00 (12) ile Akşam 21:59 (21) arası Available
+            if (hour >= 12 && hour < 22) {
+                currentStatus = 'available';
+            } else {
+                currentStatus = 'busy';
+            }
+            updateStatusUI();
+        }
+
+        function updateStatusUI() {
+            const colors = statusColors[currentStatus];
+            const container = document.getElementById('auto-status-container');
+            const glow = document.getElementById('auto-status-glow');
+            const ping = document.getElementById('auto-status-ping');
+            const dot = document.getElementById('auto-status-dot');
+            const label = document.getElementById('auto-status-label');
+            const text = document.getElementById('current-status-text');
+            
+            // Renkleri Doğrudan Uygula
+            container.style.backgroundColor = colors.faint;
+            container.style.borderColor = colors.light;
+            glow.style.backgroundColor = colors.light;
+            dot.style.backgroundColor = colors.main;
+            ping.style.backgroundColor = colors.main;
+            label.style.color = colors.main;
+
+            // Metni Dile Göre Güncelle
+            const lang = document.documentElement.lang || 'en';
+            text.innerText = translations[lang]['status_' + currentStatus];
+        }
+
+        // Sayfa yüklendiğinde saati kontrol et ve her dakika başı tekrar kontrol et
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAndSetStatus();
+            // Her 60 saniyede bir saati kontrol eder (site açık kalırsa otomatik değişir)
+            setInterval(checkAndSetStatus, 60000); 
+        });
+
+        // --- TRANSLATIONS ---
+        const translations = {
+            en: {
+                contact_text: "Let's Talk",
+                sys_init: "System.Initialize(\"Mobile & Full-Stack\")",
+                hero_title: "Building digital experiences I'd actually <span class='text-[#38bdf8]'>want to use.</span>",
+                hero_desc: "I build mobile apps, engineer backend architectures, and obsess over UI animations until they feel perfect. I leverage AI agents to write cleaner code, faster.",
+                availability_label: "STATUS",
+                status_available: "Available for work",
+                status_busy: "Deep Work / Busy",
+                bg_title: "Background",
+                exp_intern_title: "Software & Database Intern",
+                exp_intern_desc: "Managed internal database systems, resolved software issues, and optimized data flow architecture.",
+                exp_pro: "Professional Experience",
+                exp_edu_title: "Computer Programming",
+                exp_edu_desc: "Focusing on object-oriented programming, modern web technologies, and mobile app development.",
+                exp_aca: "Academic",
+                tech_title: "Tech Arsenal",
+                prj_muzo: "A privacy-focused YouTube Music client. No ads, background playback, and a UI that actually makes sense. Open source and built with Flutter.",
+                prj_film: "High-performance web streaming clone. Hand-coded the entire database infrastructure from scratch to master data flow.",
+                prj_valo: "Basically Tinder, but for finding teammates in Valorant. The swipe physics and glassmorphism UI took forever to get right.",
+                prj_soul: "Built an AI-powered social diary integrating OpenAI. Previously developed a hardware control simulator entirely in Java to map out system architectures.",
+                joke_title: "Looking for something? 👀",
+                joke_desc: "Then contact me! You can drop a message on WhatsApp or check out my open-source code on GitHub.",
+                joke_btn_wa: "WhatsApp",
+                joke_btn_git: "GitHub",
+                footer: "Built by Furkan Ertürk. 2026.",
+                systems: "All systems operational"
+            },
+            tr: {
+                contact_text: "İletişime Geç",
+                sys_init: "Sistem.Baslat(\"Mobil & Full-Stack\")",
+                hero_title: "Gerçekten <span class='text-[#38bdf8]'>kullanmak isteyeceğim</span> dijital deneyimler inşa ediyorum.",
+                hero_desc: "Mobil uygulamalar geliştiriyor, backend mimarileri kuruyor ve arayüz animasyonları mükemmel olana kadar ince ayar yapıyorum. Hızlı kod yazmak için yapay zekayı kullanıyorum.",
+                availability_label: "DURUM",
+                status_available: "İş tekliflerine açık",
+                status_busy: "Derin Odak / Meşgul",
+                bg_title: "Geçmiş",
+                exp_intern_title: "Yazılım & Veritabanı Stajyeri",
+                exp_intern_desc: "Şirket içi veritabanı sistemlerini yönettim, yazılım sorunlarını çözdüm ve veri akışı mimarisini optimize ettim.",
+                exp_pro: "Profesyonel Deneyim",
+                exp_edu_title: "Bilgisayar Programcılığı",
+                exp_edu_desc: "Nesne yönelimli programlama, modern web teknolojileri ve mobil uygulama geliştirme odaklı eğitim.",
+                exp_aca: "Akademik",
+                tech_title: "Teknoloji Cephaneliği",
+                prj_muzo: "Gizlilik odaklı YouTube Music istemcisi. Reklam yok, arka planda oynatma var ve kullanımı kolay bir arayüz. Flutter ile geliştirildi.",
+                prj_film: "Yüksek performanslı web yayın klonu. Veri akışını kavramak için tüm veritabanı altyapısını sıfırdan kendim kodladım.",
+                prj_valo: "Kısaca Valorant oyuncuları için Tinder. Eşleşme arayüzü ve kaydırma fiziklerini oturtmak epey zaman aldı.",
+                prj_soul: "OpenAI entegreli, yapay zeka destekli sosyal günlük. Daha önce mimarileri kavramak için Java ile donanım kontrol simülatörü geliştirmiştim.",
+                joke_title: "Bir şey mi arıyorsun? 👀",
+                joke_desc: "O zaman bana ulaş! WhatsApp'tan yazabilir veya kodları GitHub'da bulabilirsin.",
+                joke_btn_wa: "WhatsApp",
+                joke_btn_git: "GitHub",
+                footer: "Furkan Ertürk tarafından geliştirildi. 2026.",
+                systems: "Tüm sistemler aktif"
+            },
+            es: {
+                contact_text: "Hablemos",
+                sys_init: "Sistema.Iniciar(\"Móvil & Full-Stack\")",
+                hero_title: "Construyendo experiencias digitales que realmente <span class='text-[#38bdf8]'>quisiera usar.</span>",
+                hero_desc: "Construyo aplicaciones móviles, diseño arquitecturas backend y me obsesiono con las animaciones UI. Aprovecho la IA para escribir código más rápido y limpio.",
+                availability_label: "ESTADO",
+                status_available: "Disponible para trabajar",
+                status_busy: "Trabajo profundo / Ocupado",
+                bg_title: "Experiencia",
+                exp_intern_title: "Pasante de Software y BD",
+                exp_intern_desc: "Gestioné sistemas de bases de datos internos, resolví problemas de software y optimicé la arquitectura del flujo de datos.",
+                exp_pro: "Experiencia Profesional",
+                exp_edu_title: "Programación Informática",
+                exp_edu_desc: "Enfocado en la programación orientada a objetos, tecnologías web modernas y desarrollo de aplicaciones móviles.",
+                exp_aca: "Académico",
+                tech_title: "Arsenal Tecnológico",
+                prj_muzo: "Cliente de YouTube Music centrado en la privacidad. Sin anuncios, reproducción en segundo plano. Código abierto con Flutter.",
+                prj_film: "Clon de streaming web de alto rendimiento. Codifiqué toda la base de datos desde cero para dominar el flujo de datos.",
+                prj_valo: "Básicamente Tinder, pero para encontrar compañeros en Valorant. La física de deslizamiento tardó una eternidad en perfeccionarse.",
+                prj_soul: "Diario social con IA integrando OpenAI. Anteriormente desarrollé un simulador de control de hardware en Java.",
+                joke_title: "¿Buscas algo? 👀",
+                joke_desc: "¡Entonces contáctame! Envíame un mensaje por WhatsApp o revisa mi GitHub.",
+                joke_btn_wa: "WhatsApp",
+                joke_btn_git: "GitHub",
+                footer: "Creado por Furkan Ertürk. 2026.",
+                systems: "Todos los sistemas operativos"
+            },
+            zh: {
+                contact_text: "联系我",
+                sys_init: "System.Initialize(\"移动端 & 全栈\")",
+                hero_title: "构建我真正<span class='text-[#38bdf8]'>想使用的</span>数字体验。",
+                hero_desc: "我开发移动应用，设计后端架构，并且痴迷于UI动画，直到它们变得完美。我利用AI编写更干净的代码。",
+                availability_label: "状态",
+                status_available: "可接受工作",
+                status_busy: "深度工作 / 忙碌",
+                bg_title: "背景",
+                exp_intern_title: "软件与数据库实习生",
+                exp_intern_desc: "管理内部数据库系统，解决软件问题，并优化数据流架构。",
+                exp_pro: "专业经验",
+                exp_edu_title: "计算机编程",
+                exp_edu_desc: "专注于面向对象编程、现代Web技术和移动应用开发。",
+                exp_aca: "学术",
+                tech_title: "技术栈",
+                prj_muzo: "注重隐私的YouTube音乐客户端。无广告，支持后台播放，使用Flutter构建开源。",
+                prj_film: "高性能的流媒体平台克隆。从零开始手写了整个数据库基础设施。",
+                prj_valo: "用于寻找Valorant队友的应用（类似Tinder）。滑动界面的物理效果花了很多时间才调整好。",
+                prj_soul: "集成了OpenAI的AI社交日记。之前使用Java开发了硬件控制模拟器。",
+                joke_title: "在找什么吗？👀",
+                joke_desc: "那就联系我吧！你可以通过WhatsApp发消息给我，或者去我的GitHub看看。",
+                joke_btn_wa: "WhatsApp",
+                joke_btn_git: "GitHub",
+                footer: "由 Furkan Ertürk 构建。2026。",
+                systems: "所有系统运行正常"
+            },
+            ar: {
+                contact_text: "لنتحدث",
+                sys_init: "تهيئة_النظام(\"تطبيقات الجوال والويب\")",
+                hero_title: "بناء تجارب رقمية <span class='text-[#38bdf8]'>أرغب حقًا في استخدامها.</span>",
+                hero_desc: "أقوم ببناء تطبيقات الجوال، وتصميم هياكل قواعد البيانات، وأهتم بأدق تفاصيل واجهات المستخدم. أستخدم الذكاء الاصطناعي لكتابة كود أنظف وأسرع.",
+                availability_label: "الحالة",
+                status_available: "متاح للعمل",
+                status_busy: "عمل عميق / مشغول",
+                bg_title: "الخلفية",
+                exp_intern_title: "متدرب برمجيات وقواعد بيانات",
+                exp_intern_desc: "إدارة أنظمة قواعد البيانات الداخلية، وحل مشكلات البرامج، وتحسين بنية تدفق البيانات.",
+                exp_pro: "خبرة مهنية",
+                exp_edu_title: "برمجة الحاسوب",
+                exp_edu_desc: "التركيز على البرمجة كائنية التوجه، وتقنيات الويب الحديثة، وتطوير تطبيقات الجوال.",
+                exp_aca: "أكاديمي",
+                tech_title: "الترسانة التقنية",
+                prj_muzo: "عميل يوتيوب ميوزيك يركز على الخصوصية. بدون إعلانات، تشغيل في الخلفية. مفتوح المصدر ومبني باستخدام Flutter.",
+                prj_film: "منصة بث ويب عالية الأداء. قمت ببرمجة البنية التحتية لقاعدة البيانات بالكامل من الصفر.",
+                prj_valo: "تطبيق للبحث عن زملاء فريق في لعبة Valorant. استغرقت فيزياء السحب وقتاً طويلاً لضبطها.",
+                prj_soul: "مذكرات اجتماعية مدعومة بالذكاء الاصطناعي باستخدام OpenAI. قمت مسبقاً بتطوير محاكي للتحكم في الأجهزة بلغة Java.",
+                joke_title: "هل تبحث عن شيء؟ 👀",
+                joke_desc: "إذن تواصل معي! يمكنك مراسلتي عبر واتساب أو التحقق من الكود المصدري على GitHub.",
+                joke_btn_wa: "واتساب",
+                joke_btn_git: "GitHub",
+                footer: "تم البناء بواسطة Furkan Ertürk. 2026.",
+                systems: "جميع الأنظمة تعمل"
+            }
+        };
+
+        function changeLanguage(langCode, langLabel) {
+            document.getElementById('current-lang').innerText = langLabel;
+            document.documentElement.lang = langCode;
+            
+            if(langCode === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+
+            if(translations[langCode]["hero_title"]) {
+                document.getElementById('hero-title').innerHTML = translations[langCode]["hero_title"];
+            }
+            if(translations[langCode]["contact_text"]) {
+                document.querySelector('[data-i18n="contact_text"]').innerHTML = translations[langCode]["contact_text"];
+            }
+
+            updateStatusUI();
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (key !== 'hero_title' && key !== 'contact_text' && translations[langCode][key]) {
+                    el.innerText = translations[langCode][key];
+                }
+            });
+        }
+
+        // Hover Glow Effect
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 </html>
