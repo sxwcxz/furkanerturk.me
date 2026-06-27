@@ -1,27 +1,100 @@
-<a href="https://github.com/sxwcxz/Muzo" target="_blank" class="bento-card p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
-    <div class="flex justify-between items-start">
-        <div>
-            <div class="text-[#1DB954] mb-4 text-3xl"><i class="fa-solid fa-headphones-simple"></i></div>
-            <h3 class="text-2xl font-medium text-white mb-3 group-hover:text-[#38bdf8] transition-colors">Muzo</h3>
-            <p class="text-gray-400 leading-relaxed max-w-lg" data-i18n="prj_muzo">A privacy-focused YouTube Music client. No ads, background playback, and a UI that actually makes sense. Open source and built with Flutter.</p>
-        </div>
-        </div>
-    <div class="flex gap-2 text-xs font-mono text-gray-500 mt-8">
-        <span class="px-3 py-1 bg-white/5 rounded-full"><i class="devicon-flutter-plain colored mr-1"></i>Flutter</span>
-        <span class="px-3 py-1 bg-white/5 rounded-full"><i class="devicon-dart-plain colored mr-1"></i>Dart</span>
-    </div>
-</a>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furkan Ertürk | Developer Portfolio</title>
+    <link rel="icon" href="https://github.com/sxwcxz.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ededed; overflow-x: hidden; transition: all 0.3s ease; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+        a, button, select { -webkit-user-select: auto; -ms-user-select: auto; user-select: auto; }
+        .bg-grid { background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 24px 24px; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; mask-image: linear-gradient(to bottom, black 30%, transparent 100%); }
+        .glow-blob { position: absolute; width: 500px; height: 500px; background: rgba(56, 188, 248, 0.12); filter: blur(120px); border-radius: 50%; top: -150px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
+        .bento-card { background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; height: 100%; }
+        .bento-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 40%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .bento-card:hover::before { opacity: 1; }
+        .bento-card:hover { border-color: rgba(56, 188, 248, 0.3); transform: translateY(-4px); box-shadow: 0 12px 40px -15px rgba(56, 188, 248, 0.2); background: rgba(25, 25, 25, 0.6); }
+        .animate-in { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .tech-box { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; cursor: pointer; gap: 0.5rem; padding: 0.5rem; }
+        .tech-box:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+        .lang-dropdown { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; transition: 0.3s; }
+        .matrix-bg { background-image: linear-gradient(rgba(56, 188, 248, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 188, 248, 0.1) 1px, transparent 1px); background-size: 12px 12px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#38bdf8] selection:text-black" dir="ltr">
+    <div class="bg-grid"></div><div class="glow-blob"></div>
 
-<a href="https://github.com/sxwcxz/filmoloji" target="_blank" class="bento-card p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
-    <div class="flex justify-between items-start">
-        <div>
-            <div class="text-[#e50914] mb-4 text-3xl"><i class="fa-solid fa-film"></i></div>
-            <h3 class="text-2xl font-medium text-white mb-3 group-hover:text-[#38bdf8] transition-colors">Filmoloji</h3>
-            <p class="text-gray-400 leading-relaxed max-w-lg" data-i18n="prj_film">High-performance web streaming clone. Hand-coded the entire database infrastructure from scratch to master data flow.</p>
+    <div id="hacker-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 invisible transition-all duration-300" onclick="closeHackerJoke(event)">
+        <div class="bg-[#0a0a0a] border border-[#38bdf8]/30 rounded-2xl p-8 max-w-sm mx-4 text-center relative overflow-hidden" onclick="event.stopPropagation()">
+            <button onclick="closeHackerJoke()" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            <div class="absolute inset-0 matrix-bg opacity-10"></div>
+            <div class="relative z-10">
+                <div class="text-[#38bdf8] text-5xl mb-4 animate-bounce"><i class="fa-solid fa-code"></i></div>
+                <h3 class="text-xl font-bold text-white mb-2" data-i18n="joke_title">Looking for something? 👀</h3>
+                <p class="text-gray-400 text-sm mb-6" data-i18n="joke_desc">Then contact me! You can drop a message on WhatsApp or check out my code on GitHub.</p>
+                <div class="flex gap-3 justify-center">
+                    <a href="https://wa.me/447441344175" class="px-5 py-2.5 bg-[#25D366]/10 text-[#25D366] rounded-full text-sm font-medium flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://github.com/sxwcxz" class="px-5 py-2.5 bg-[#38bdf8]/10 text-[#38bdf8] rounded-full text-sm font-medium flex items-center gap-2"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
         </div>
-        </div>
-    <div class="flex gap-2 text-xs font-mono text-gray-500 mt-8">
-        <span class="px-3 py-1 bg-white/5 rounded-full"><i class="devicon-html5-plain colored mr-1"></i>HTML/JS</span>
-        <span class="px-3 py-1 bg-white/5 rounded-full"><i class="devicon-firebase-plain colored mr-1"></i>Firebase DB</span>
     </div>
-</a>
+
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center relative z-50 animate-in">
+        <div class="font-mono text-white flex items-center gap-3">furkan.</div>
+        <div class="flex gap-4 items-center">
+            <div class="relative group">
+                <button class="lang-dropdown text-white px-4 py-2"><span id="current-lang">EN</span> <i class="fa-solid fa-chevron-down text-xs ml-1"></i></button>
+                <div class="absolute right-0 mt-2 w-32 bg-[#151515] border border-white/10 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50">
+                    <button onclick="changeLanguage('en','EN')" class="block w-full px-4 py-2 text-sm text-left hover:bg-white/10">English</button>
+                    <button onclick="changeLanguage('tr','TR')" class="block w-full px-4 py-2 text-sm text-left hover:bg-white/10">Türkçe</button>
+                </div>
+            </div>
+            <a href="https://wa.me/447441344175" class="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 transition-all">Let's Talk</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pt-10 pb-24 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+            <div class="bento-card p-10 lg:col-span-3 h-full animate-in delay-1">
+                <h1 class="text-5xl font-bold text-white mb-6">Building digital experiences I'd actually <span class="text-[#38bdf8]">want to use.</span></h1>
+            </div>
+            <div class="bento-card p-8 h-full animate-in delay-2 flex flex-col justify-center items-center">
+                <div class="relative w-28 h-28 mb-4">
+                    <div class="absolute inset-0 bg-[#38bdf8] rounded-full animate-spin-slow"></div>
+                    <img src="https://github.com/sxwcxz.png" class="absolute inset-[3px] rounded-full" />
+                </div>
+                <div id="auto-status-container" class="w-full mt-4 p-3 rounded-xl border flex items-center gap-3">
+                    <div id="auto-status-dot" class="w-2.5 h-2.5 rounded-full animate-pulse"></div>
+                    <span id="current-status-text" class="text-xs font-medium">Loading...</span>
+                </div>
+            </div>
+            </div>
+    </main>
+
+    <script>
+        // Güvenlik
+        document.addEventListener('contextmenu', e => { e.preventDefault(); showHackerJoke(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault(); showHackerJoke();
+            }
+        });
+
+        // Status
+        function checkStatus() {
+            const h = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Istanbul"})).getHours();
+            const status = (h >= 12 && h < 22) ? {text: "Available for work", color: "#22c55e"} : {text: "Deep Work / Busy", color: "#ef4444"};
+            document.getElementById('current-status-text').innerText = status.text;
+            document.getElementById('auto-status-dot').style.backgroundColor = status.color;
+        }
+        checkStatus();
+    </script>
+</body>
+</html>
