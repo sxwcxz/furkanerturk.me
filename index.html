@@ -11,90 +11,124 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ededed; overflow-x: hidden; transition: all 0.3s ease; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
-        a, button, select { -webkit-user-select: auto; -ms-user-select: auto; user-select: auto; }
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ededed; overflow-x: hidden; -webkit-user-select: none; user-select: none; }
+        a, button, select { -webkit-user-select: auto; user-select: auto; }
         .bg-grid { background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 24px 24px; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; mask-image: linear-gradient(to bottom, black 30%, transparent 100%); }
         .glow-blob { position: absolute; width: 500px; height: 500px; background: rgba(56, 188, 248, 0.12); filter: blur(120px); border-radius: 50%; top: -150px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
         .bento-card { background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; height: 100%; }
-        .bento-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 40%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-        .bento-card:hover::before { opacity: 1; }
-        .bento-card:hover { border-color: rgba(56, 188, 248, 0.3); transform: translateY(-4px); box-shadow: 0 12px 40px -15px rgba(56, 188, 248, 0.2); background: rgba(25, 25, 25, 0.6); }
-        .animate-in { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .bento-card:hover { border-color: rgba(56, 188, 248, 0.3); transform: translateY(-4px); box-shadow: 0 12px 40px -15px rgba(56, 188, 248, 0.2); }
         .tech-box { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; cursor: pointer; gap: 0.5rem; padding: 0.5rem; }
         .tech-box:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
-        .lang-dropdown { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; transition: 0.3s; }
-        .matrix-bg { background-image: linear-gradient(rgba(56, 188, 248, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 188, 248, 0.1) 1px, transparent 1px); background-size: 12px 12px; }
+        .tech-box i { font-size: 1.75rem; }
+        .tech-box span { font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; opacity: 0.8; }
+        .lang-dropdown { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; cursor: pointer; padding: 0.5rem 1rem; }
     </style>
 </head>
-<body class="antialiased selection:bg-[#38bdf8] selection:text-black" dir="ltr">
+<body dir="ltr">
     <div class="bg-grid"></div><div class="glow-blob"></div>
 
+    <!-- HACKER MODAL -->
     <div id="hacker-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 invisible transition-all duration-300" onclick="closeHackerJoke(event)">
         <div class="bg-[#0a0a0a] border border-[#38bdf8]/30 rounded-2xl p-8 max-w-sm mx-4 text-center relative overflow-hidden" onclick="event.stopPropagation()">
             <button onclick="closeHackerJoke()" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <div class="absolute inset-0 matrix-bg opacity-10"></div>
-            <div class="relative z-10">
-                <div class="text-[#38bdf8] text-5xl mb-4 animate-bounce"><i class="fa-solid fa-code"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2" data-i18n="joke_title">Looking for something? 👀</h3>
-                <p class="text-gray-400 text-sm mb-6" data-i18n="joke_desc">Then contact me! You can drop a message on WhatsApp or check out my code on GitHub.</p>
-                <div class="flex gap-3 justify-center">
-                    <a href="https://wa.me/447441344175" class="px-5 py-2.5 bg-[#25D366]/10 text-[#25D366] rounded-full text-sm font-medium flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    <a href="https://github.com/sxwcxz" class="px-5 py-2.5 bg-[#38bdf8]/10 text-[#38bdf8] rounded-full text-sm font-medium flex items-center gap-2"><i class="fab fa-github"></i> GitHub</a>
-                </div>
+            <h3 class="text-xl font-bold text-white mb-4">Bir şey mi arıyorsun? 👀</h3>
+            <p class="text-gray-400 text-sm mb-6">O zaman bana ulaş! WhatsApp'tan yazabilir veya kodları GitHub'da bulabilirsin.</p>
+            <div class="flex gap-3 justify-center">
+                <a href="https://wa.me/447441344175" class="px-5 py-2.5 bg-[#25D366]/10 text-[#25D366] rounded-full text-sm font-medium flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://github.com/sxwcxz" class="px-5 py-2.5 bg-[#38bdf8]/10 text-[#38bdf8] rounded-full text-sm font-medium flex items-center gap-2"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
     </div>
 
+    <!-- NAV -->
     <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center relative z-50 animate-in">
-        <div class="font-mono text-white flex items-center gap-3">furkan.</div>
+        <div class="font-mono text-white">furkan.</div>
         <div class="flex gap-4 items-center">
-            <div class="relative group">
-                <button class="lang-dropdown text-white px-4 py-2"><span id="current-lang">EN</span> <i class="fa-solid fa-chevron-down text-xs ml-1"></i></button>
-                <div class="absolute right-0 mt-2 w-32 bg-[#151515] border border-white/10 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50">
-                    <button onclick="changeLanguage('en','EN')" class="block w-full px-4 py-2 text-sm text-left hover:bg-white/10">English</button>
-                    <button onclick="changeLanguage('tr','TR')" class="block w-full px-4 py-2 text-sm text-left hover:bg-white/10">Türkçe</button>
-                </div>
-            </div>
+            <button onclick="toggleLang()" class="lang-dropdown text-white text-sm"><i class="fa-solid fa-globe text-[#38bdf8]"></i> <span id="current-lang">EN</span></button>
             <a href="https://wa.me/447441344175" class="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 transition-all">Let's Talk</a>
         </div>
     </nav>
 
+    <!-- MAIN -->
     <main class="max-w-7xl mx-auto px-6 pt-10 pb-24 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+            <!-- HERO -->
             <div class="bento-card p-10 lg:col-span-3 h-full animate-in delay-1">
                 <h1 class="text-5xl font-bold text-white mb-6">Building digital experiences I'd actually <span class="text-[#38bdf8]">want to use.</span></h1>
+                <p class="text-gray-400 text-lg">I build mobile apps, engineer backend architectures, and obsess over UI animations.</p>
             </div>
-            <div class="bento-card p-8 h-full animate-in delay-2 flex flex-col justify-center items-center">
-                <div class="relative w-28 h-28 mb-4">
-                    <div class="absolute inset-0 bg-[#38bdf8] rounded-full animate-spin-slow"></div>
-                    <img src="https://github.com/sxwcxz.png" class="absolute inset-[3px] rounded-full" />
+            <!-- STATUS -->
+            <div class="bento-card p-8 flex flex-col items-center justify-center text-center animate-in delay-2 h-full">
+                <div class="w-24 h-24 mb-4"><img src="https://github.com/sxwcxz.png" class="rounded-full border-2 border-[#38bdf8]" /></div>
+                <div id="status-box" class="w-full mt-4 p-3 rounded-xl border flex items-center gap-3">
+                    <div id="dot" class="w-2.5 h-2.5 rounded-full"></div>
+                    <span id="status-text" class="text-xs font-medium">Loading...</span>
                 </div>
-                <div id="auto-status-container" class="w-full mt-4 p-3 rounded-xl border flex items-center gap-3">
-                    <div id="auto-status-dot" class="w-2.5 h-2.5 rounded-full animate-pulse"></div>
-                    <span id="current-status-text" class="text-xs font-medium">Loading...</span>
+            </div>
+            <!-- BACKGROUND -->
+            <div class="bento-card p-8 lg:col-span-2 h-full animate-in delay-3">
+                <h3 class="text-lg font-medium text-white mb-6"><i class="fa-solid fa-briefcase mr-2"></i>Background</h3>
+                <div class="space-y-6">
+                    <div><h4 class="text-white font-medium">Software & Database Intern</h4><p class="text-xs text-gray-500">Memoria Bilişim & Arnavutköy</p></div>
+                    <div><h4 class="text-white font-medium">Computer Programming</h4><p class="text-xs text-gray-500">Kırklareli University</p></div>
                 </div>
             </div>
+            <!-- TECH ARSENAL -->
+            <div class="bento-card p-8 lg:col-span-2 h-full animate-in delay-3">
+                <h3 class="text-lg font-medium text-white mb-6"><i class="fa-solid fa-layer-group mr-2"></i>Tech Arsenal</h3>
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="tech-box"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+                    <div class="tech-box"><i class="devicon-dart-plain colored"></i><span>Dart</span></div>
+                    <div class="tech-box"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                    <div class="tech-box"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                    <div class="tech-box"><i class="devicon-javascript-plain colored"></i><span>JS</span></div>
+                    <div class="tech-box"><i class="devicon-typescript-plain colored"></i><span>TS</span></div>
+                    <div class="tech-box"><i class="devicon-react-original colored"></i><span>React</span></div>
+                    <div class="tech-box"><i class="devicon-tailwindcss-original colored"></i><span>Tailwind</span></div>
+                    <div class="tech-box"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                    <div class="tech-box"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                    <div class="tech-box"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="tech-box"><i class="devicon-nodejs-plain colored"></i><span>Node</span></div>
+                    <div class="tech-box"><i class="devicon-supabase-plain colored"></i><span>Supabase</span></div>
+                    <div class="tech-box"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                    <div class="tech-box"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                    <div class="tech-box"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="tech-box"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                    <div class="tech-box"><i class="devicon-figma-plain colored"></i><span>Figma</span></div>
+                    <div class="tech-box"><i class="fa-solid fa-brain text-[#D97757]"></i><span>Claude</span></div>
+                    <div class="tech-box"><i class="fa-solid fa-wand-magic-sparkles text-[#38bdf8]"></i><span>Antigravity</span></div>
+                </div>
             </div>
+            <!-- PROJECTS -->
+            <a href="https://github.com/sxwcxz/Muzo" class="bento-card p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
+                <div><div class="text-[#1DB954] mb-4 text-3xl"><i class="fa-solid fa-headphones-simple"></i></div><h3 class="text-2xl font-medium text-white mb-3">Muzo</h3><p class="text-gray-400 text-sm">Privacy-focused YouTube Music client.</p></div>
+            </a>
+            <a href="https://github.com/sxwcxz/filmoloji" class="bento-card p-8 lg:col-span-2 group flex flex-col justify-between animate-in delay-4 h-full">
+                <div><div class="text-[#e50914] mb-4 text-3xl"><i class="fa-solid fa-film"></i></div><h3 class="text-2xl font-medium text-white mb-3">Filmoloji</h3><p class="text-gray-400 text-sm">Web streaming clone with Firebase DB.</p></div>
+            </a>
+        </div>
     </main>
 
     <script>
         // Güvenlik
         document.addEventListener('contextmenu', e => { e.preventDefault(); showHackerJoke(); });
         document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'u')) {
+            if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && (e.shiftKey || e.altKey) && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || ((e.ctrlKey || e.metaKey) && e.key === 'u')) {
                 e.preventDefault(); showHackerJoke();
             }
         });
+        function showHackerJoke() { document.getElementById('hacker-modal').classList.remove('opacity-0', 'invisible'); }
+        function closeHackerJoke() { document.getElementById('hacker-modal').classList.add('opacity-0', 'invisible'); }
 
-        // Status
-        function checkStatus() {
+        // Durum
+        function updateStatus() {
             const h = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Istanbul"})).getHours();
-            const status = (h >= 12 && h < 22) ? {text: "Available for work", color: "#22c55e"} : {text: "Deep Work / Busy", color: "#ef4444"};
-            document.getElementById('current-status-text').innerText = status.text;
-            document.getElementById('auto-status-dot').style.backgroundColor = status.color;
+            const s = (h >= 12 && h < 22) ? {t: "Available for work", c: "#22c55e"} : {t: "Deep Work / Busy", c: "#ef4444"};
+            document.getElementById('status-text').innerText = s.t;
+            document.getElementById('status-box').style.borderColor = s.c + "40";
+            document.getElementById('dot').style.backgroundColor = s.c;
         }
-        checkStatus();
+        updateStatus();
     </script>
 </body>
 </html>
